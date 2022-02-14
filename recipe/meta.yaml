@@ -12,6 +12,8 @@ source:
     - patches/0002-compile-with-c-17.patch
     - patches/0003-point-to-correct-faiss-lib.patch
     - patches/0004-add-install-step.patch
+    - patches/0005-unify-CMake-setup-add-link-options.patch
+    - patches/0006-don-t-skip-build-on-windows.patch
 
 build:
   number: 1
@@ -24,8 +26,8 @@ requirements:
 outputs:
   # only difference between graphvite-mini and graphvite is the amout on runtime-deps
   - name: graphvite-mini
-    script: build-pkg.sh
-
+    script: build-pkg.sh   # [not win]
+    script: build-pkg.bat  # [win]
     build:
       string: "py{{ CONDA_PY }}cuda{{ cuda_compiler_version|replace(".", "") }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_cuda"
     requirements:
@@ -37,6 +39,7 @@ outputs:
         - gflags
         - python
         - pybind11
+        - ninja  # [win]
       host:
         # make
         - glog
@@ -50,6 +53,8 @@ outputs:
         - pyyaml
         - setuptools
         - six
+        # windows
+        - pthreads-win32  # [win]
       run:
         - glog
         - gflags
