@@ -16,7 +16,7 @@ source:
     - patches/0006-don-t-skip-build-on-windows.patch
 
 build:
-  number: 1
+  number: 2
   skip: true  # [cuda_compiler_version in ("None", "10.2")]
 
 requirements:
