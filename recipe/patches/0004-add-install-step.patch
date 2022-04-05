@@ -1,7 +1,7 @@
 From 1ecbc9886c5b40e6ed4b7824f5f4701b75076b18 Mon Sep 17 00:00:00 2001
 From: "H. Vetinari" <h.vetinari@gmx.com>
 Date: Sat, 12 Feb 2022 23:29:22 +1100
-Subject: [PATCH 4/4] add install step
+Subject: [PATCH 4/6] add install step
 
 ---
  src/CMakeLists.txt | 4 +++-
