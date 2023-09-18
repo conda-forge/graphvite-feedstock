@@ -14,7 +14,7 @@ source:
     - patches/0004-add-install-step.patch
 
 build:
-  number: 2
+  number: 3
   # only linux for now
   skip: true  # [not linux]
   skip: true  # [cuda_compiler_version in ("None", "10.2")]
