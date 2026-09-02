@@ -36,6 +36,8 @@ requirements:
     - {{ compiler("cuda") }}
     - {{ compiler('cxx') }}
     - {{ stdlib('c') }}
+  host:
+    - python
 
 outputs:
   # only difference between graphvite-mini and graphvite is the amout on runtime-deps
