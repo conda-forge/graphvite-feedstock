@@ -29,7 +29,7 @@ build:
   skip: true  # [not linux]
   skip: true  # [cuda_compiler_version == "None"]
   # use of removed imp library
-  skip: true  # [py==312]
+  skip: true  # [py>=312]
 
 requirements:
   build:
@@ -42,7 +42,7 @@ outputs:
   - name: graphvite-mini
     script: build-pkg.sh
     build:
-      skip: true  # [py==312]
+      skip: true  # [py>=312]
       string: "py{{ CONDA_PY }}cuda{{ cuda_compiler_version|replace(".", "") }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_cuda"
     requirements:
       build:
@@ -93,10 +93,10 @@ outputs:
   # only difference between graphvite-mini and graphvite is the amout on runtime-deps
   - name: graphvite
     build:
-      noarch: python
+      noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage('graphvite-mini', exact=True) }}
+        - {{ pin_subpackage('graphvite-mini', max_pin='x.x.x') }}
         - imageio
         - matplotlib
         - nltk
